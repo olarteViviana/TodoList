@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_6/controller/TaskController.dart';
 import 'package:flutter_application_6/model/Tasks.dart';
+import 'package:flutter_application_6/view/pages/CreateTaskPage.dart';
 import 'package:flutter_application_6/view/widgets/AppBarTask.dart';
 import 'package:provider/provider.dart';
 
@@ -61,5 +62,13 @@ class _ListTaskPageState extends State<ListTaskPage> {
         );
       },
     ); 
+  }
+
+  loadCreateTaskPage(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => CreateTaskPage()
+      ),
+    );
   }
 }
