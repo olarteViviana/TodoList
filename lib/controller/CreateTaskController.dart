@@ -3,14 +3,14 @@ import 'package:flutter_application_6/controller/TaskController.dart';
 import 'package:flutter_application_6/model/Tasks.dart';
 
 String? validatorName(String? name) {
-  if (name == null || name!.isEmpty) {
+  if (name == null || name.isEmpty) {
     return "El nombre es obligatorio";
   }
   return null;
 }
 
 String? validatorDescription(String? description) {
-  if (description == null || description!.isEmpty) {
+  if (description == null || description.isEmpty) {
     return "La descripción es obligatorio";
   }
   return null;
