@@ -17,9 +17,6 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text("Lista de Tareas"),
-        ),
         body: ListTaskPage(),
       ),
     );
