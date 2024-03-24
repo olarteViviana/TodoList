@@ -38,32 +38,24 @@ class _ListTaskPageState extends State<ListTaskPage> {
       itemCount: tasks.length,
       itemBuilder: (context, index) {
         Tasks task = tasks[index];
-        return Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Column(
-              children: [
-                Text(task.name),
-                Text(task.description),
-              ],
-            ),
-            Checkbox(
-              value: values['allow'],
-              onChanged: (newValue) {
-                setState(() {
-                  values['allow'] = newValue;
-                });
-              },
-            ),
-            IconButton(
-              onPressed: () => taskController.removeTask(task),
-              icon: const Icon(Icons.delete),
-            ),
-          ],
+        return ListTile(
+          title: Text(task.name),
+          subtitle: Text(task.description),
+          trailing: Checkbox(
+            value: values['allow'],
+            onChanged: (newValue) {
+              setState(() {
+                values['allow'] = newValue;
+              });
+            },
+          ),
+          leading: IconButton(
+            onPressed: () => taskController.removeTask(task),
+            icon: const Icon(Icons.delete),
+          ),
         );
       },
-    ); 
+    );
   }
 
   loadCreateTaskPage(BuildContext context) {
