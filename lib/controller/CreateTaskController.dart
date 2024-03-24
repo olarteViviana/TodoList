@@ -28,3 +28,7 @@ saveTask(GlobalKey<FormState> _key,
     }
   }
 }
+
+cancelTask(GlobalKey<FormState> _key) {
+  _key.currentState!.reset();
+}

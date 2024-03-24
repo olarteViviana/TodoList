@@ -5,7 +5,12 @@ import 'package:flutter_application_6/view/pages/CreateTaskPage.dart';
 import 'package:flutter_application_6/view/widgets/AppBarTask.dart';
 import 'package:provider/provider.dart';
 
-class ListTaskPage  extends StatelessWidget{
+class ListTaskPage  extends StatefulWidget{
+  @override
+  State<ListTaskPage> createState() => _ListTaskPageState();
+}
+
+class _ListTaskPageState extends State<ListTaskPage> {
   String title = "Lista de Tareas";
 
   @override
@@ -46,6 +51,7 @@ class ListTaskPage  extends StatelessWidget{
               value: values['allow'],
               onChanged: (newValue) {
                 values['allow'] = newValue;
+                setState(() {});
               },
             ),
             IconButton(

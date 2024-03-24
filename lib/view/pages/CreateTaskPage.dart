@@ -46,16 +46,27 @@ class _CreateTaskPageState extends State<CreateTaskPage> {
                 labelText: "Descripción",
                 hintText: "Ingrese la descripción de la tarea"),
             ),
-            TextButton(
-              onPressed: () => 
-                saveTask(
-                  _key,
-                  name: name,
-                  description: description,
-                  provider: taskController
+            Row(
+              children: [
+                TextButton(
+                  onPressed: () => 
+                    saveTask(
+                      _key,
+                      name: name,
+                      description: description,
+                      provider: taskController
+                    ),
+                  child: const Text("Aceptar"),
                 ),
-                child: const Text("Guargar Tarea"),
-            ),
+                TextButton(
+                  onPressed: () => 
+                    cancelTask(
+                      _key
+                    ),
+                  child: const Text("Cancelar"),
+                ),
+              ],
+            )
           ],
         ),
       ),
