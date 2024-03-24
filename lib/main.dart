@@ -13,9 +13,11 @@ void main() {
 }
 
 class MainApp extends StatelessWidget {
+  String title = "Tareas";
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: ListTaskPage(),
       ),

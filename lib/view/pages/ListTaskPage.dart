@@ -5,12 +5,7 @@ import 'package:flutter_application_6/view/pages/CreateTaskPage.dart';
 import 'package:flutter_application_6/view/widgets/AppBarTask.dart';
 import 'package:provider/provider.dart';
 
-class ListTaskPage  extends StatefulWidget{
-  @override
-  State<ListTaskPage> createState() => _ListTaskPageState();
-}
-
-class _ListTaskPageState extends State<ListTaskPage> {
+class ListTaskPage  extends StatelessWidget{
   String title = "Lista de Tareas";
 
   @override
@@ -23,6 +18,9 @@ class _ListTaskPageState extends State<ListTaskPage> {
           return listTasks(taskController);
         },
       ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () => loadCreateTaskPage(context)),
     );
   }
 
@@ -38,20 +36,16 @@ class _ListTaskPageState extends State<ListTaskPage> {
         return Row(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Container(
-              width: 50,
-              child: Column(
-                children: [
-                  Text(task.name),
-                  Text(task.description),
-                ],
-              ),
+            Column(
+              children: [
+                Text(task.name),
+                Text(task.description),
+              ],
             ),
             Checkbox(
               value: values['allow'],
               onChanged: (newValue) {
                 values['allow'] = newValue;
-                setState(() {});
               },
             ),
             IconButton(
