@@ -12,6 +12,9 @@ class ListTaskPage  extends StatefulWidget{
 
 class _ListTaskPageState extends State<ListTaskPage> {
   String title = "Lista de Tareas";
+  Map<String, dynamic> values = {
+    'allow': false,
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -31,15 +34,13 @@ class _ListTaskPageState extends State<ListTaskPage> {
 
   ListView listTasks(TaskController taskController) {
     List<Tasks> tasks = taskController.tasks;
-    Map<String, dynamic> values = {
-      'allow': false,
-      };
     return ListView.builder(
       itemCount: tasks.length,
       itemBuilder: (context, index) {
         Tasks task = tasks[index];
         return Row(
           mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Column(
               children: [
@@ -50,8 +51,9 @@ class _ListTaskPageState extends State<ListTaskPage> {
             Checkbox(
               value: values['allow'],
               onChanged: (newValue) {
-                values['allow'] = newValue;
-                setState(() {});
+                setState(() {
+                  values['allow'] = newValue;
+                });
               },
             ),
             IconButton(
