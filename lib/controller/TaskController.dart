@@ -1,19 +1,24 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_application_6/model/Tasks.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TaskController extends ChangeNotifier {
-  List<Tasks> _tasks = [];
+  FirebaseFirestore db = FirebaseFirestore.instance;
 
-  List<Tasks> get tasks => _tasks;
+  final String collection = "tasks";
 
-  addTask(Tasks tasks) {
-    _tasks.add(tasks);
-    notifyListeners();
+  Future<String> create(Map<String, dynamic> task) async {
+    try {
+      DocumentReference response = await db.collection(collection).add(task);
+      return response.id;
+    } catch (e) {
+      print(e);
+      return "";
+    }
   }
 
-  removeTask(Tasks tasks) {
-    _tasks.remove(tasks);
-    notifyListeners();
+  Stream<QuerySnapshot> getTasks() {
+    return db.collection(collection).snapshots();
   }
   
 }

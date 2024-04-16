@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_6/controller/TaskController.dart';
 import 'package:flutter_application_6/model/Tasks.dart';
@@ -24,7 +26,7 @@ saveTask(GlobalKey<FormState> _key,
     if (name != null && description != null) {
       print(name);
       Tasks tasks = Tasks(name: name, description: description);
-      provider.addTask(tasks);
+      provider.create(tasks.toMap());
     }
   }
 }

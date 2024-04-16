@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_6/controller/TaskController.dart';
 import 'package:flutter_application_6/model/Tasks.dart';
@@ -18,22 +19,29 @@ class _ListTaskPageState extends State<ListTaskPage> {
 
   @override
   Widget build(BuildContext context) {
-    TaskController provider = Provider.of(context);
+    TaskController provider = Provider.of<TaskController>(context);
     return Scaffold(
-      appBar: AppBarTask("Lista de Tareas ${provider.tasks.length}"),
-      body: Consumer<TaskController>(
-        builder: (context, taskController, child) {
-          return listTasks(taskController);
+      appBar: AppBarTask(title: "Lista de Tareas"),
+      body: StreamBuilder<QuerySnapshot>(
+        stream: provider.getTasks(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator();
+          } else if (snapshot.hasError) {
+            return Text("Error: ${snapshot.error}");
+          } else {
+            List<Tasks> tasks = snapshot.data?.docs.map((doc) => Tasks).toList() as List<Tasks>;
+            return listTasks(tasks);
+          }
         },
-      ),
+      ), 
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () => loadCreateTaskPage(context)),
     );
   }
 
-  ListView listTasks(TaskController taskController) {
-    List<Tasks> tasks = taskController.tasks;
+  ListView listTasks(List<Tasks> tasks) {
     return ListView.builder(
       itemCount: tasks.length,
       itemBuilder: (context, index) {
@@ -50,7 +58,7 @@ class _ListTaskPageState extends State<ListTaskPage> {
             },
           ),
           leading: IconButton(
-            onPressed: () => taskController.removeTask(task),
+            onPressed: () => tasks.removeAt(index),
             icon: const Icon(Icons.delete),
           ),
         );

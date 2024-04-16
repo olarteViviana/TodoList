@@ -18,7 +18,7 @@ class _CreateTaskPageState extends State<CreateTaskPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarTask("Nueva Tarea"),
+      appBar: AppBarTask(title: "Crear Tarea"),
       body: Consumer<TaskController>(
         builder: (context, taskController, child) => 
           taskForm(taskController),

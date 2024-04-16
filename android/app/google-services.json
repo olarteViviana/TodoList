@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "992550354467",
+    "project_id": "flutter-udem-2024-420411",
+    "storage_bucket": "flutter-udem-2024-420411.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:992550354467:android:3493430a36b71138817b96",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_6"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWoAl4w774vaUgrC3jFOnIVQR3FiMPoQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:992550354467:android:8f5f4618384502b2817b96",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_8"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWoAl4w774vaUgrC3jFOnIVQR3FiMPoQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
