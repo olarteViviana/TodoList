@@ -1,3 +1,7 @@
+import 'dart:html';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Tasks {
   final String name;
   final String description;
@@ -9,5 +13,12 @@ class Tasks {
       'name': name,
       'description': description,
     };
+  }
+
+  static Tasks fromDocument(DocumentSnapshot doc) {
+    return Tasks(
+      name: doc['name'],
+      description: doc['description'],
+    );
   }
 }

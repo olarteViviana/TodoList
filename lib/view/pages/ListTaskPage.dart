@@ -30,7 +30,7 @@ class _ListTaskPageState extends State<ListTaskPage> {
           } else if (snapshot.hasError) {
             return Text("Error: ${snapshot.error}");
           } else {
-            List<Tasks> tasks = snapshot.data?.docs.map((doc) => Tasks).toList() as List<Tasks>;
+            List<Tasks> tasks = snapshot.data!.docs.map((doc) => Tasks.fromDocument(doc)).toList();
             return listTasks(tasks);
           }
         },
